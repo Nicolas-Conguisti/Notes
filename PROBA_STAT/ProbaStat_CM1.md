@@ -29,6 +29,8 @@ Le dénombrement revient à calculer le nombre d'éléments d'un ensemble fini $
 
 $$\text{Card}(E) = \#E$$
 
+*Exemple :* Soit $E = \{a, b, c, d\}$. L'ensemble contient $4$ éléments distincts, donc $\text{Card}(E) = 4$.
+
 *Notation :* $E = \{1, 3, 2\}$
 
 ---
@@ -56,7 +58,7 @@ $$\forall x \in A, \ x \in B$$
 #### Définitions
 - **Intersection :** $A \cap B = \{x \,;\, x \in A \text{ et } x \in B\}$
 - **Union :** $A \cup B = \{x \,;\, x \in A \text{ ou } x \in B\}$
-- **Complémentaire :** $\overline{B}$ (ou $E \setminus B$) représente tous les éléments qui ne sont pas dans $B$.
+- **Complémentaire :** $\overline{B}$ (ou $E \setminus B$) représente l'ensemble des éléments de $E$ qui ne sont pas dans $B$.
 
 #### Distributivité
 *(Attention : $(A \cup B) \cap C \neq A \cup (B \cap C)$ en général)*
@@ -67,8 +69,8 @@ $$\forall x \in A, \ x \in B$$
 Soient $G = A \cap (B \cup C)$ et $D = (A \cap B) \cup (A \cap C)$.
 
 1. **$G \subset D$ :** Soit $x \in G$, donc $x \in A$ et $x \in (B \cup C)$.
-    - 1er cas : $x \in B \implies x \in A \cap B \implies x \in D$.
-    - 2ème cas : $x \notin B \implies x \in C$ (car $x \in B \cup C$) $\implies x \in A \cap C \implies x \in D$.
+   - 1er cas : $x \in B \implies x \in A \cap B \implies x \in D$.
+   - 2ème cas : $x \notin B \implies x \in C$ (car $x \in B \cup C$) $\implies x \in A \cap C \implies x \in D$.
 2. **$D \subset G$ :** $B \subset B \cup C \implies (A \cap B) \subset A \cap (B \cup C)$, et de même pour $C$. Donc $D \subset G$.
 
 ---
@@ -106,19 +108,35 @@ En posant $A \setminus B = \{x \in A \,;\, x \notin B\}$ :
 
 ---
 
-### 5. Applications et Bijections
+### 5. Applications, Image réciproque et Bijections
 
-Soit $f : E \to \{1, \dots, n\}$. L'image réciproque est $f^{-1}(A) = \{x \in E \,;\, f(x) \in A\}$.
+#### A. Image réciproque et Découpage par cas
+Soit une fonction $f : E \to \{1, \dots, n\}$.
+L'**image réciproque** d'un élément $i$, notée $f^{-1}(\{i\})$, est l'ensemble de tous les éléments de départ qui atterrissent sur $i$ par la fonction $f$ :
 
-Comme les $f^{-1}(\{i\})$ sont disjoints, on peut découper $E$ par cas :
+$$f^{-1}(\{i\}) = \{x \in E \,;\, f(x) = i\}$$
+
+> **Exemple concret :** Soit $E$ un groupe d'élèves et $f$ l'application qui associe à chaque élève sa note à un devoir (de $1$ à $20$).
+> $f^{-1}(\{20\})$ est simplement l'ensemble des élèves qui ont eu $20/20$.
+
+Puisque chaque élément de $E$ a une et une seule image par $f$, regrouper les éléments de $E$ selon leur résultat divise $E$ en paquets disjoints (une partition) :
 
 $$\text{Card}(E) = \sum_{i=1}^{n} \text{Card}\left(f^{-1}(\{i\})\right)$$
 
-#### Propriétés d'une application $f : A \to B$
-- **Injective** ($x \neq y \implies f(x) \neq f(y)$) : $\text{Card}(A) \leq \text{Card}(B)$
-- **Surjective** ($\forall b \in B, \exists a \in A, b = f(a)$) : $\text{Card}(A) \geq \text{Card}(B)$
-- **Bijective** (Injective + Surjective) : $\text{Card}(A) = \text{Card}(B)$
+*Signification :* Pour compter le nombre total d'élèves ($\text{Card}(E)$), on peut compter combien ont eu $1/20$, combien ont eu $2/20$, etc., et tout additionner.
 
+#### B. Propriétés d'une application $f : A \to B$ et taille des ensembles
+
+On compare la taille (le cardinal) des ensembles de départ $A$ et d'arrivée $B$ selon les propriétés de la fonction :
+
+- **Injective :** Chaque élément de $B$ a **au plus un** antécédent dans $A$ (deux éléments distincts au départ ont des images différentes).
+  $$\text{Card}(A) \leq \text{Card}(B)$$
+- **Surjective :** Chaque élément de $B$ a **au moins un** antécédent dans $A$ (tout le monde dans $B$ est atteint par la fonction).
+  $$\text{Card}(A) \geq \text{Card}(B)$$
+- **Bijective :** Chaque élément de $B$ a **exactement un** antécédent dans $A$ (Injective ET Surjective).
+  $$\text{Card}(A) = \text{Card}(B)$$
+
+> **À quoi ça sert ?** Si on arrive à construire une bijection entre un ensemble compliqué $A$ et un ensemble simple $B$ dont on connaît la taille, alors $\text{Card}(A) = \text{Card}(B)$. C'est l'un des outils majeurs du dénombrement.
 ---
 
 ### 6. Cardinaux usuels à connaître
