@@ -137,12 +137,20 @@ On compare la taille (le cardinal) des ensembles de départ $A$ et d'arrivée $B
   $$\text{Card}(A) = \text{Card}(B)$$
 
 > **À quoi ça sert ?** Si on arrive à construire une bijection entre un ensemble compliqué $A$ et un ensemble simple $B$ dont on connaît la taille, alors $\text{Card}(A) = \text{Card}(B)$. C'est l'un des outils majeurs du dénombrement.
+
 ---
 
 ### 6. Cardinaux usuels à connaître
 
 #### A. Produit cartésien
 $$\text{Card}(A \times B) = \text{Card}(A) \times \text{Card}(B)$$
+
+*Exemple :* On choisit une tenue composée d'un t-shirt et d'un pantalon.
+- Ensemble des t-shirts : $A = \{\text{rouge}, \text{bleu}, \text{vert}\}$ ($\text{Card}(A) = 3$)
+- Ensemble des pantalons : $B = \{\text{jean}, \text{short}\}$ ($\text{Card}(B) = 2$)
+
+L'ensemble des tenues possibles est $A \times B$. On a donc :
+$$\text{Card}(A \times B) = 3 \times 2 = 6 \text{ tenues différentes.}$$
 
 ##### Preuve :
 Soit $f : A \times B \to A, (a, b) \mapsto a$.
@@ -153,6 +161,14 @@ $$\text{Card}(A \times B) = \sum_{a \in A} \text{Card}(B) = \text{Card}(A) \time
 Soient $\text{Card}(A) = n$ et $\text{Card}(B) = p$.
 
 $$\text{Card}\left(\mathcal{F}(A, B)\right) = \text{Card}(B)^{\text{Card}(A)} = p^n$$
+
+*Exemple :* On répond à un QCM de $4$ questions ($A = \{Q_1, Q_2, Q_3, Q_4\}$), où chaque question propose $3$ réponses possibles ($B = \{a, b, c\}$). \
+Remplir une grille de réponses revient à définir une fonction de $A$ dans $B$ (associer une réponse à chaque question) :
+- $\text{Card}(A) = 4$
+- $\text{Card}(B) = 3$
+
+Le nombre total de grilles de réponses possibles est :
+$$\text{Card}\left(\mathcal{F}(A, B)\right) = 3^4 = 81 \text{ grilles différentes.}$$
 
 *Cas particuliers :*
 - Si $B = \{1\} \implies 1^n = 1$
