@@ -1,72 +1,75 @@
 ## Cours 2 : Vocabulaire des probabilités
 
-On travaille avec des expériences dont on ne connaît pas le résultat a priori.
+On travaille avec des expériences aléatoires, c'est-à-dire des expériences dont on ne peut pas prédire le résultat avec certitude a priori.
 
 ---
 
 ### 1. Définitions fondamentales
 
-**Définition (Événement, Univers) :**
-- Un **événement** est le résultat d'une expérience aléatoire.
-- L'ensemble des résultats possibles est appelé l'**univers**.
-- Un événement est une **partie (un sous-ensemble) de l'univers**.
+**Définition (Univers, Événement) :**
+- L'ensemble de tous les résultats possibles d'une expérience aléatoire est appelé l'**univers**, généralement noté $\Omega$.
+- Un **événement élémentaire** est une issue unique de l'expérience, notée $\{\omega\}$ avec $\omega \in \Omega$.
+- Un **événement** est une partie (un sous-ensemble) de l'univers : $A \subset \Omega$.
 
 ---
 
 ### 2. Exemple d'application : Lancer de deux dés
 
-On considère le lancer de $2$ dés à $6$ faces : $1$ rouge et $1$ blanc.
+On considère le lancer de $2$ dés discernables à $6$ faces : $1$ rouge et $1$ blanc.
 
 #### A. Description de l'univers
-L'univers s'écrit sous forme de couples d'éléments :
+L'univers s'écrit sous forme de couples ordonnés $(f_1, f_2)$ où $f_1$ représente la face du premier dé (rouge) et $f_2$ celle du second (blanc) :
 
 $$\Omega = \{(f_1, f_2) \ ; \ f_i \in \{1, \dots, 6\}\} = \{1, \dots, 6\}^2$$
 
-Son cardinal est :
+Son cardinal (nombre total d'issues possibles) est :
 
-$$\text{Card}(\Omega) = 36$$
+$$\text{Card}(\Omega) = 6 \times 6 = 36$$
 
 #### B. Description d'un événement
 Soit l'événement $A$ : « au moins un des deux dés tombe sur $6$ ».
 
 L'événement $A$ s'écrit comme l'union de deux sous-ensembles :
+- $A_1$ : « le premier dé donne $6$ » $\implies A_1 = \{(6, i) \ ; \ i \in \{1, \dots, 6\}\}$
+- $A_2$ : « le second dé donne $6$ » $\implies A_2 = \{(i, 6) \ ; \ i \in \{1, \dots, 6\}\}$
 
-$$A = \{(6, i) \ ; \ i \in \{1, \dots, 6\}\} \cup \{(i, 6) \ ; \ i \in \{1, \dots, 6\}\}$$
+$$A = A_1 \cup A_2 \quad \text{avec} \quad A_1 \cap A_2 = \{(6, 6)\} \neq \emptyset$$
 
-En posant $A_1$ le sous-ensemble où le premier dé vaut $6$ et $A_2$ le sous-ensemble où le second dé vaut $6$ :
-
-$$A = A_1 \cup A_2 \quad \text{avec} \quad A_1 \cap A_2 \neq \emptyset$$
-
-*(L'élément $(6, 6)$ appartient aux deux sous-ensembles, donc leur intersection n'est pas vide.)*
+*(L'issue $(6, 6)$ appartient aux deux sous-ensembles, donc leur intersection n'est pas vide.)*
 
 #### C. Remarques importantes
-- Si l'on s'intéressait uniquement au résultat du dé rouge, on aurait pu choisir l'univers $\{1, \dots, 6\}$.
-- **Attention :** Il n'y a pas un choix d'univers unique. Il faut veiller à choisir un univers « facile » à manipuler selon le problème.
-- On note souvent l'univers $\Omega$. Les événements $A, B$ sont des sous-ensembles de $\Omega$ ($A \subset \Omega$, $B \subset \Omega$), sur lesquels on effectue des opérations comme l'intersection $A \cap B$ ou l'union $A \cup B$.
+- Si l'on s'intéressait uniquement au résultat du dé rouge, on aurait pu choisir un univers plus restreint : $\Omega' = \{1, \dots, 6\}$.
+- **Attention :** Il n'y a pas un choix d'univers unique pour une expérience. On choisit toujours l'univers le plus simple et le plus adapté aux questions posées.
+- Les événements $A, B$ étant des sous-ensembles de $\Omega$ ($A \subset \Omega$, $B \subset \Omega$), on leur applique le langage des ensembles :
+    - **Intersection $A \cap B$ :** l'événement « $A$ ET $B$ se réalisent ».
+    - **Union $A \cup B$ :** l'événement « $A$ OU $B$ (ou les deux) se réalise ».
+    - **Événements incompatibles :** deux événements $A$ et $B$ sont dits disjoints (ou incompatibles) si $A \cap B = \emptyset$.
 
 ---
 
 ### 3. Exercice d'application
 
-**Énoncé :** On effectue trois lancers successifs d'une pièce de monnaie (Pile $P$ et Face $F$).
+**Énoncé :** On effectue trois lancers successifs d'une pièce de monnaie équilibrée (Pile $P$ et Face $F$).
 
 1. **Décrire l'univers $\Omega$ :**
    $$\Omega = \{P, F\}^3 = \{(P,P,P), (P,P,F), (P,F,P), (P,F,F), (F,P,P), (F,P,F), (F,F,P), (F,F,F)\}$$
    $$\text{Card}(\Omega) = 2^3 = 8$$
 
-2. **Décrire l'événement $B$ : « obtenir exactement 2 piles » :**
+2. **Décrire l'événement $B$ : « obtenir exactement 2 Piles » :**
    $$B = \{(P, P, F), (P, F, P), (F, P, P)\}$$
    $$\text{Card}(B) = 3$$
 
+---
+
 ### 4. Généralisation : $n$ tirages successifs
 
-On effectue $n$ tirages successifs à Pile ($P$) ou Face ($F$). L'univers est $\Omega = \{P, F\}^n$.
+On effectue $n$ tirages successifs à Pile ($P$) ou Face ($F$). L'univers est $\Omega = \{P, F\}^n$, de cardinal $\text{Card}(\Omega) = 2^n$.
 
-On souhaite déterminer le cardinal de l'événement $A$ : « obtenir exactement $k$ fois Pile ».
+On souhaite déterminer le cardinal de l'événement $A$ : « obtenir exactement $k$ fois Pile » (avec $0 \le k \le n$).
 
-Un élément de $A$ s'écrit sous la forme d'un $n$-uplet $(P, F, P, P, \dots)$ contenant exactement $k$ fois la lettre $P$.
+Un élément de $A$ s'écrit sous la forme d'un $n$-uplet $(P, F, P, P, \dots)$ contenant exactement $k$ fois la lettre $P$ et $(n-k)$ fois la lettre $F$.
 
-> **Méthode :** Le nombre de façons de placer ces $k$ Piles parmi les $n$ emplacements disponibles est donné par le coefficient binomial :
+> **Méthode :** Choisir un tel $n$-uplet revient à choisir l'emplacement des $k$ lettres $P$ parmi les $n$ positions disponibles. Le nombre de choix possibles est donné par le coefficient binomial :
 > $$\text{Card}(A) = \#A = \binom{n}{k}$$
 
 ---
@@ -77,34 +80,37 @@ Un élément de $A$ s'écrit sous la forme d'un $n$-uplet $(P, F, P, P, \dots)$ 
 
 Soit $\Omega = \{\omega_1, \dots, \omega_N\}$ un univers fini de cardinal $\#\Omega = N$.
 
-Une **probabilité** $\mathbb{P}$ (ou $P$) est une application définie de l'ensemble des parties $\mathcal{P}(\Omega)$ vers l'intervalle $[0, 1]$ :
+On note $\mathcal{P}(\Omega)$ l'ensemble de toutes les parties de $\Omega$. Une **probabilité** $\mathbb{P}$ est une application :
 
 $$\mathbb{P} : \mathcal{P}(\Omega) \longrightarrow [0, 1]$$
 
 Elle vérifie les deux axiomes fondamentaux :
 
-1. **Additivité sur des événements disjoints :**
+1. **Additivité sur des événements incompatibles :**
    $$\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) \quad \text{si } A \cap B = \emptyset$$
 
-2. **Masse totale :**
+2. **Masse totale (Normalisation) :**
    $$\mathbb{P}(\Omega) = 1$$
 
 ---
 
 ### 2. Probabilité élémentaire et loi de probabilité
 
-Définir la fonction $\mathbb{P}$ revient à attribuer à chaque événement élémentaire $\{\omega_i\}$ une probabilité $p_i = \mathbb{P}(\{\omega_i\})$.
+Définir une probabilité $\mathbb{P}$ sur un univers fini $\Omega$ revient à attribuer à chaque événement élémentaire $\{\omega_i\}$ un nombre réel $p_i = \mathbb{P}(\{\omega_i\})$, appelé probabilité élémentaire.
 
 - Pour tout $i \in \{1, \dots, N\}$, $p_i \in [0, 1]$.
 - La somme des probabilités élémentaires vaut 1 :
   $$\sum_{i=1}^{N} \mathbb{P}(\{\omega_i\}) = \sum_{i=1}^{N} p_i = \mathbb{P}(\Omega) = 1$$
 
-Pour tout événement $A = \{\omega_{i_1}, \dots, \omega_{i_k}\}$, sa probabilité est la somme des probabilités des événements élémentaires qui le composent :
+Pour tout événement non vide $A = \{\omega_{i_1}, \dots, \omega_{i_k}\}$, sa probabilité est la somme des probabilités des événements élémentaires qui le composent :
 
 $$\mathbb{P}(A) = \sum_{j=1}^{k} \mathbb{P}(\{\omega_{i_j}\})$$
 
-> **Remarque (Événement contraire) :**
-> Puisque $\Omega = A \cup \overline{A}$ avec $A \cap \overline{A} = \emptyset$, on a $\mathbb{P}(\Omega) = \mathbb{P}(A) + \mathbb{P}(\overline{A}) = 1$. D'où :
+Par convention, pour l'événement impossible : $\mathbb{P}(\emptyset) = 0$.
+
+> **Propriété (Événement contraire) :**
+> Tout événement $A$ et son contraire $\overline{A}$ forment une partition de $\Omega$ ($A \cup \overline{A} = \Omega$ et $A \cap \overline{A} = \emptyset$).
+> Par additivité : $\mathbb{P}(A \cup \overline{A}) = \mathbb{P}(A) + \mathbb{P}(\overline{A}) = \mathbb{P}(\Omega) = 1$, d'où :
 > $$\mathbb{P}(\overline{A}) = 1 - \mathbb{P}(A)$$
 
 ---
@@ -112,39 +118,42 @@ $$\mathbb{P}(A) = \sum_{j=1}^{k} \mathbb{P}(\{\omega_{i_j}\})$$
 ### 3. Probabilité uniforme (Équiprobabilité)
 
 **Définition :**
-Soit $\Omega = \{\omega_1, \dots, \omega_N\}$. Si tous les événements élémentaires ont la même chance de se réaliser, on définit la **probabilité uniforme** sur $\Omega$ par :
+Soit $\Omega = \{\omega_1, \dots, \omega_N\}$ un univers fini. Lorsqu'aucun résultat n'est favorisé, tous les événements élémentaires ont la même probabilité :
 
-$$\mathbb{P}(A) = \frac{\#A}{\#\Omega} = \frac{\text{Card}(A)}{\text{Card}(\Omega)}$$
+$$p_1 = p_2 = \dots = p_N = \frac{1}{\text{Card}(\Omega)} = \frac{1}{N}$$
+
+On dit qu'il y a **équiprobabilité** (ou probabilité uniforme). Dans ce cadre, pour tout événement $A \subset \Omega$ :
+
+$$\mathbb{P}(A) = \frac{\text{Nombre de cas favorables}}{\text{Nombre de cas possibles}} = \frac{\#A}{\#\Omega} = \frac{\text{Card}(A)}{\text{Card}(\Omega)}$$
 
 ---
 
-### 4. Exemple d'application
+### 4. Exemples d'application
 
-**Énoncé :** On tire $n$ fois de suite à Pile ou Face. Quelle est la probabilité de l'événement $A$ : « obtenir exactement $1$ fois Face » ?
+**Énoncé :** On tire $n$ fois de suite une pièce équilibrée à Pile ou Face.
 
+#### A. Probabilité d'obtenir exactement 1 fois Face
 1. **Choix de l'univers :**
-   On prend $\Omega = \{P, F\}^n$ muni de la probabilité uniforme. Chaque $n$-uplet a autant de chance de sortir qu'un autre (par exemple, $(P, P, \dots, P)$ a la même probabilité que $(P, F, \dots, P)$).
+   $\Omega = \{P, F\}^n$ muni de la probabilité uniforme (chaque séquence a la même probabilité $1/2^n$).
    $$\text{Card}(\Omega) = 2^n$$
 
-2. **Calcul de $\mathbb{P}(A)$ :**
-   L'événement $A$ correspond aux $n$-uplets contenant exactement un $F$ et $(n-1)$ fois $P$. Il y a $n$ emplacements possibles pour positionner la lettre $F$.
+2. **Calcul de $\mathbb{P}(A)$ pour $A$ : « obtenir exactement 1 fois Face » :**
+   L'événement $A$ contient les $n$-uplets ayant 1 seul $F$ et $(n-1)$ lettres $P$. Le $F$ peut être placé à $n$ positions différentes.
    $$\text{Card}(A) = \binom{n}{1} = n$$
 
-   D'où la probabilité :
+   D'où :
    $$\mathbb{P}(A) = \frac{\text{Card}(A)}{\text{Card}(\Omega)} = \frac{n}{2^n}$$
 
-#### 3. Probabilité de tomber au moins une fois sur Face
+#### B. Probabilité de tomber au moins une fois sur Face
 Soit l'événement $A$ : « obtenir au moins une fois Face ».
 
-L'événement contraire $\overline{A}$ correspond à « n'obtenir aucun Face », c'est-à-dire obtenir uniquement des Piles :
+L'événement contraire $\overline{A}$ est « n'obtenir aucun Face », c'est-à-dire n'obtenir que des Piles :
 
-$$\overline{A} = \{(P, \dots, P)\}$$
+$$\overline{A} = \{(P, P, \dots, P)\}$$
 
-On a $\text{Card}(\overline{A}) = 1$, d'où :
+On a $\text{Card}(\overline{A}) = 1$, donc $\mathbb{P}(\overline{A}) = \frac{1}{2^n}$.
 
-$$\mathbb{P}(\overline{A}) = \frac{1}{2^n}$$
-
-En utilisant la propriété de l'événement contraire ($\mathbb{P}(A) + \mathbb{P}(\overline{A}) = 1$) :
+En utilisant la propriété de l'événement contraire :
 
 $$\mathbb{P}(A) = 1 - \mathbb{P}(\overline{A}) = 1 - \frac{1}{2^n}$$
 
@@ -160,29 +169,28 @@ $$\mathbb{P}(A) = 1 - \mathbb{P}(\overline{A}) = 1 - \frac{1}{2^n}$$
 
 Quelle est la probabilité d'être à la plage sans méduses ni pluie ?
 
-On cherche $\mathbb{P}(\overline{M} \cap \overline{P})$. Par les lois de De Morgan, $\overline{M} \cap \overline{P} = \overline{M \cup P}$, donc :
+On cherche $\mathbb{P}(\overline{M} \cap \overline{P})$. D'après les lois de De Morgan, $\overline{M} \cap \overline{P} = \overline{M \cup P}$ (le contraire de « pluie ou méduses »), d'où :
 
 $$\mathbb{P}(\overline{M} \cap \overline{P}) = 1 - \mathbb{P}(M \cup P)$$
 
 Calcul de $\mathbb{P}(M \cup P)$ :
 
-$$\mathbb{P}(M \cup P) = \mathbb{P}(M) + \mathbb{P}(P) - \mathbb{P}(M \cap P) = \frac{1}{6} + \frac{1}{9} - \frac{1}{12} = \frac{6}{36} + \frac{4}{36} - \frac{3}{36} = \frac{7}{36}$$
+$$\mathbb{P}(M \cup P) = \mathbb{P}(M) + \mathbb{P}(P) - \mathbb{P}(M \cap P) = \frac{1}{6} + \frac{1}{9} - \frac{1}{12} = \frac{6 + 4 - 3}{36} = \frac{7}{36}$$
 
 D'où :
 
 $$\mathbb{P}(\overline{M} \cap \overline{P}) = 1 - \frac{7}{36} = \frac{29}{36}$$
 
-#### B. Proposition générale
+#### B. Proposition générale (Formule du criblage pour deux ensembles)
 > **Proposition :** Soient $A, B \subset \Omega$,
-> $$\mathbb{P}(A \cup B) + \mathbb{P}(A \cap B) = \mathbb{P}(A) + \mathbb{P}(B)$$
-> Soit sous la forme usuelle :
 > $$\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)$$
 
 **Démonstration :**
-On décompose $A \cup B$ en union disjointes : $A \cup B = (A \setminus B) \cup B$.
-Donc $\mathbb{P}(A \cup B) = \mathbb{P}(A \setminus B) + \mathbb{P}(B)$.
+On décompose $A \cup B$ en union de sous-ensembles disjoints : $A \cup B = (A \setminus B) \cup B$.
+Par additivité : $\mathbb{P}(A \cup B) = \mathbb{P}(A \setminus B) + \mathbb{P}(B)$.
 
-Or, $A = (A \setminus B) \cup (A \cap B)$ (union disjointe), d'où $\mathbb{P}(A) = \mathbb{P}(A \setminus B) + \mathbb{P}(A \cap B)$, ce qui donne $\mathbb{P}(A \setminus B) = \mathbb{P}(A) - \mathbb{P}(A \cap B)$.
+De même, $A$ se décompose en union disjointe : $A = (A \setminus B) \cup (A \cap B)$.
+D'où $\mathbb{P}(A) = \mathbb{P}(A \setminus B) + \mathbb{P}(A \cap B)$, ce qui donne $\mathbb{P}(A \setminus B) = \mathbb{P}(A) - \mathbb{P}(A \cap B)$.
 
 En remplaçant :
 
@@ -192,55 +200,84 @@ $$\mathbb{P}(A \cup B) = \mathbb{P}(A) - \mathbb{P}(A \cap B) + \mathbb{P}(B)$$
 
 ### 6. Produit d'espaces probabilisés
 
-Comment apparaissent les probabilités lors de la combinaison de plusieurs expériences ?
+Lorsque l'on combine deux expériences aléatoires indépendantes :
 
 Soient deux espaces probabilisés $(\Omega_1, \mathbb{P}_1)$ et $(\Omega_2, \mathbb{P}_2)$.
-On définit l'espace produit $(\Omega_1 \times \Omega_2, \mathbb{P}_1 \otimes \mathbb{P}_2)$ où la probabilité produit vérifie :
+On définit l'espace produit $(\Omega_1 \times \Omega_2, \mathbb{P}_1 \otimes \mathbb{P}_2)$ où la probabilité produit vérifie, pour tout $(\omega_1, \omega_2) \in \Omega_1 \times \Omega_2$ :
 
-$$\mathbb{P}_1 \otimes \mathbb{P}_2 (\{(\omega_1, \omega_2)\}) = \mathbb{P}_1(\{\omega_1\}) \cdot \mathbb{P}_2(\{\omega_2\})$$
+$$(\mathbb{P}_1 \otimes \mathbb{P}_2) (\{(\omega_1, \omega_2)\}) = \mathbb{P}_1(\{\omega_1\}) \times \mathbb{P}_2(\{\omega_2\})$$
 
-> **Remarque :** Si $\mathbb{P}_1$ et $\mathbb{P}_2$ sont des probabilités uniformes, alors $\mathbb{P}_1 \otimes \mathbb{P}_2$ est également une probabilité uniforme sur $\Omega_1 \times \Omega_2$.
+> **Remarque :** Si $\mathbb{P}_1$ et $\mathbb{P}_2$ sont des probabilités uniformes sur $\Omega_1$ et $\Omega_2$, alors la probabilité produit $\mathbb{P}_1 \otimes \mathbb{P}_2$ est aussi la probabilité uniforme sur l'espace produit $\Omega_1 \times \Omega_2$.
 
 ---
 
 ## Cours 4 : Probabilités conditionnelles
 
-### 1. Résolution de l'exemple du lancer de dés
+### 1. Exemple introductif : Lancer de deux dés
 
-On lance deux dés. On s'intéresse aux événements :
+On lance deux dés équilibrés à $6$ faces. On s'intéresse aux événements :
 - $A$ : « la somme des deux faces vaut $8$ »
 - $B$ : « obtenir au moins un $3$ »
 
-#### A. Étude des événements
-- **Univers :** $\Omega = \{1, \dots, 6\}^2$, avec $\text{Card}(\Omega) = 36$.
+#### A. Étude des événements dans l'univers global $\Omega$
+- **Univers :** $\Omega = \{1, \dots, 6\}^2$, avec $\text{Card}(\Omega) = 36$ (équiprobabilité).
 - **Événement $B$ :** $B = \{(3, i) \ ; \ i \in \{1,\dots,6\}\} \cup \{(j, 3) \ ; \ j \in \{1,\dots,6\}\}$.
-  $$\text{Card}(B) = 6 + 6 - 1 = 11 \implies \mathbb{P}(B) = \frac{11}{36}$$
+  Par formule de l'union : $\text{Card}(B) = 6 + 6 - 1 = 11$ (en retirant le doublon $(3,3)$).
+  $$\mathbb{P}(B) = \frac{11}{36}$$
 - **Événement $A$ :**
   $$A = \{(2, 6), (3, 5), (4, 4), (5, 3), (6, 2)\}$$
-  $$\text{Card}(A) = 5 \implies \mathbb{P}(A) = \frac{\text{Card}(A)}{\text{Card}(\Omega)} = \frac{5}{36}$$
+  $$\text{Card}(A) = 5 \implies \mathbb{P}(A) = \frac{5}{36}$$
 
-#### B. Calcul de la probabilité sachant $A$
-On cherche la probabilité d'avoir au moins un $3$ ($B$) **sachant que** la somme vaut $8$ ($A$).
+#### B. Probabilité de $B$ sachant $A$
+Si l'on sait que l'événement $A$ est réalisé, $A$ devient notre **nouvel univers de référence**.
 
-En se restreignant à $A$ comme « nouvel univers » :
-- Les cas favorables dans $A$ qui contiennent un $3$ sont $(3, 5)$ et $(5, 3)$, soit l'intersection $B \cap A$.
-- $\text{Card}(B \cap A) = 2$.
+- Dans cet univers restreint $A$, les issues qui réalisent aussi $B$ sont celles de l'intersection $A \cap B$ :
+  $$A \cap B = \{(3, 5), (5, 3)\} \implies \text{Card}(A \cap B) = 2$$
 
-La probabilité recherchée est donc :
+La probabilité d'obtenir au moins un $3$ sachant que la somme vaut $8$ est donc :
 
-$$\frac{\text{Card}(B \cap A)}{\text{Card}(A)} = \frac{2}{5} = \frac{\mathbb{P}(B \cap A)}{\mathbb{P}(A)}$$
+$$\frac{\text{Card}(A \cap B)}{\text{Card}(A)} = \frac{2}{5}$$
+
+En divisant le numérateur et le dénominateur par $\text{Card}(\Omega) = 36$, on retrouve :
+
+$$\frac{\text{Card}(A \cap B) / 36}{\text{Card}(A) / 36} = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}$$
 
 ---
 
 ### 2. Définition générale
 
 > **Définition :**
-> Soit $A \subset \Omega$ un événement tel que $\mathbb{P}(A) > 0$.
-> La **probabilité conditionnelle** de $B \subset \Omega$ sachant $A$, notée $\mathbb{P}_A(B)$ (ou $\mathbb{P}(B \mid A)$), est donnée par :
+> Soit $A \subset \Omega$ un événement de probabilité non nulle ($\mathbb{P}(A) > 0$).
+> La **probabilité conditionnelle** de $B$ sachant $A$, notée $\mathbb{P}_A(B)$ ou $\mathbb{P}(B \mid A)$, est définie par :
 > $$\mathbb{P}_A(B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}$$
 
-> **Remarque :**
-> Pour un événement $A$ fixé ($\mathbb{P}(A) > 0$), l'application $\mathbb{P}_A : \mathcal{P}(\Omega) \to [0, 1]$ définit une **nouvelle probabilité** sur $\Omega$.
+> **Propriété fondamentale :**
+> Pour un événement $A$ fixé tel que $\mathbb{P}(A) > 0$, l'application :
+> $$\mathbb{P}_A : \mathcal{P}(\Omega) \longrightarrow [0, 1], \quad B \longmapsto \mathbb{P}_A(B)$$
+> définit **une véritable probabilité** sur $\Omega$.
 >
-> En effet, elle vérifie les axiomes d'une probabilité :
->
+> **Démonstration des axiomes :**
+> 1. **Masse totale :**
+     >    $$\mathbb{P}_A(\Omega) = \frac{\mathbb{P}(A \cap \Omega)}{\mathbb{P}(A)} = \frac{\mathbb{P}(A)}{\mathbb{P}(A)} = 1$$
+> 2. **Additivité :** Si $B_1 \cap B_2 = \emptyset$, alors $(A \cap B_1) \cap (A \cap B_2) = \emptyset$. Ainsi :
+     >    $$\mathbb{P}_A(B_1 \cup B_2) = \frac{\mathbb{P}(A \cap (B_1 \cup B_2))}{\mathbb{P}(A)} = \frac{\mathbb{P}((A \cap B_1) \cup (A \cap B_2))}{\mathbb{P}(A)} = \frac{\mathbb{P}(A \cap B_1) + \mathbb{P}(A \cap B_2)}{\mathbb{P}(A)} = \mathbb{P}_A(B_1) + \mathbb{P}_A(B_2)$$
+
+Par conséquent, toutes les propriétés usuelles d'une probabilité s'appliquent à $\mathbb{P}_A$ (par exemple : $\mathbb{P}_A(\overline{B}) = 1 - \mathbb{P}_A(B)$).
+
+---
+
+### 3. Formules fondamentales
+
+#### A. Formule des probabilités composées
+De la définition de la probabilité conditionnelle, on déduit :
+
+$$\mathbb{P}(A \cap B) = \mathbb{P}(A) \times \mathbb{P}_A(B)$$
+
+De manière symétrique (si $\mathbb{P}(B) > 0$) :
+
+$$\mathbb{P}(A \cap B) = \mathbb{P}(B) \times \mathbb{P}_B(A)$$
+
+#### B. Formule de Bayes (forme simple)
+En égalisant les deux expressions de $\mathbb{P}(A \cap B)$, on obtient la **formule de Bayes** :
+
+$$\mathbb{P}_A(B) = \frac{\mathbb{P}_B(A) \times \mathbb{P}(B)}{\mathbb{P}(A)}$$
