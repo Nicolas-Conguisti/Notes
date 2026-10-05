@@ -69,8 +69,8 @@ $$\forall x \in A, \ x \in B$$
 Soient $G = A \cap (B \cup C)$ et $D = (A \cap B) \cup (A \cap C)$.
 
 1. **$G \subset D$ :** Soit $x \in G$, donc $x \in A$ et $x \in (B \cup C)$.
-   - 1er cas : $x \in B \implies x \in A \cap B \implies x \in D$.
-   - 2ème cas : $x \notin B \implies x \in C$ (car $x \in B \cup C$) $\implies x \in A \cap C \implies x \in D$.
+  - 1er cas : $x \in B \implies x \in A \cap B \implies x \in D$.
+  - 2ème cas : $x \notin B \implies x \in C$ (car $x \in B \cup C$) $\implies x \in A \cap C \implies x \in D$.
 2. **$D \subset G$ :** $B \subset B \cup C \implies (A \cap B) \subset A \cap (B \cup C)$, et de même pour $C$. Donc $D \subset G$.
 
 ---
@@ -205,3 +205,77 @@ On fixe le choix du premier élément $a_1$ parmi $n$ possibilités :
 | $n$ | $(n-1)!$ |
 
 $$\text{Card}\left(\text{Bij}(A, A)\right) = \sum_{i=1}^{n} (n-1)! = n \times (n-1)! = n!$$
+
+---
+
+### 7. Modélisation : Problème des boules et des urnes
+
+**Problème :** On dispose de $k$ boules et $n$ urnes.
+
+#### Cas 1 : Boules et urnes discernables, placement libre
+
+Soient $B = \{b_1, \dots, b_k\}$ l'ensemble des $k$ boules et $U = \{u_1, \dots, u_n\}$ l'ensemble des $n$ urnes.
+On place chaque boule dans **1 seule urne**.
+
+Combien y a-t-il de configurations possibles ?
+
+- **Modélisation mathématique :**
+  Placer chaque boule dans une urne revient à définir une fonction $f : B \to U$ qui à chaque boule $b \in B$ associe l'urne $f(b) \in U$ dans laquelle elle se trouve.
+
+  $$\begin{aligned} f : B &\to U \\ b &\mapsto f(b) \end{aligned}$$
+
+  Chaque fonction $f$ représente **une configuration**.
+
+- **Nombre de configurations :**
+  L'ensemble des configurations est l'ensemble des fonctions de $B$ dans $U$, noté $\mathcal{F}(B, U)$. Le nombre total de configurations est donc :
+
+  $$\#\mathcal{F}(B, U) = (\#U)^{\#B} = n^k$$
+
+- **Exemple :**
+  Si la boule $b_1$ va dans l'urne $u_1$, $b_2$ dans $u_1$, $\dots$, $b_k$ dans $u_1$, la configuration correspond au $k$-uplet $(u_1, u_1, \dots, u_1)$.
+
+#### Cas 2 : Urnes numérotées et boules indistinguables (méthode « bâtons et boules »)
+
+Les urnes sont numérotées $(u_1, \dots, u_n)$ et les $k$ boules sont indifférenciées (indistinguables).
+
+##### A. Cas de 2 urnes ($n = 2$)
+On cherche à répartir $k$ boules dans $2$ urnes. Si l'urne $u_1$ contient $i$ boules, l'urne $u_2$ en contient obligatoirement $k - i$.
+
+Une configuration est entièrement déterminée par le couple $(i, k - i)$ pour $i \in \{0, 1, \dots, k\}$.
+
+Le nombre de configurations possibles est donc :
+
+$$k + 1$$
+
+##### B. Cas de 3 urnes ($n = 3$)
+On cherche le nombre de triplets $(i_1, i_2, i_3)$ d'entiers naturels tels que :
+
+$$i_1 + i_2 + i_3 = k$$
+
+*(Ce problème peut se traiter de manière récursive en fixant la valeur de $i_1$.)*
+
+##### C. Cas général : $k$ boules dans $n$ urnes (Changement de représentation)
+
+Pour traiter le cas général d'une équation $i_1 + i_2 + \dots + i_n = k$, on utilise un **changement de représentation graphique** :
+
+1. **Codage sous forme de symboles :**
+  - On représente les **$k$ boules** par des cercles/zéro (`o` ou $0$).
+  - On sépare les **$n$ urnes** à l'aide de **$n - 1$ barres de séparation** (ou $1$).
+
+2. **Exemple explicite :**
+   Pour $5$ boules ($k = 5$) et $2$ urnes ($n = 2 \implies n-1 = 1$ séparation) :
+  - `| o o o o o` correspond au couple $(0, 5)$
+  - `o o o | o o` correspond au couple $(3, 2)$
+  - `o o o o o |` correspond au couple $(5, 0)$
+
+3. **Généralisation avec $n$ urnes :**
+   Placer $k$ boules dans $n$ urnes équivaut à construire un mot de longueur $n - 1 + k$ composé de :
+  - $n - 1$ barres (représentées par des $1$)
+  - $k$ boules (représentées par des $0$)
+
+   *Exemple :* Pour $n = 4$ urnes ($3$ séparations) et $k = 6$ boules, la suite `0 | 0 | | 0 0 0 0` correspond à la répartition $(1, 1, 0, 4)$.
+
+4. **Formule du nombre de configurations :**
+   Choisir une configuration revient à choisir la position des $k$ boules (ou des $n - 1$ séparations) parmi les $n - 1 + k$ emplacements disponibles :
+
+   $$\binom{n - 1 + k}{k} = \binom{n - 1 + k}{n - 1}$$
